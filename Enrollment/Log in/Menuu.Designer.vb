@@ -32,45 +32,45 @@ Partial Class Menuu
         '
         'PictureBox1
         '
-        Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBox1.BackColor = System.Drawing.Color.White
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(-4, -1)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(212, 310)
+        Me.PictureBox1.Size = New System.Drawing.Size(212, 307)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
         'Admin
         '
-        Me.Admin.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Admin.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Admin.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Admin.Location = New System.Drawing.Point(278, 69)
+        Me.Admin.Location = New System.Drawing.Point(254, 63)
         Me.Admin.Name = "Admin"
-        Me.Admin.Size = New System.Drawing.Size(188, 39)
+        Me.Admin.Size = New System.Drawing.Size(242, 49)
         Me.Admin.TabIndex = 2
         Me.Admin.Text = "Admin Log In"
         Me.Admin.UseVisualStyleBackColor = True
         '
         'Registrar
         '
-        Me.Registrar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Registrar.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Registrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Registrar.Location = New System.Drawing.Point(278, 129)
+        Me.Registrar.Location = New System.Drawing.Point(254, 123)
         Me.Registrar.Name = "Registrar"
-        Me.Registrar.Size = New System.Drawing.Size(188, 39)
+        Me.Registrar.Size = New System.Drawing.Size(242, 49)
         Me.Registrar.TabIndex = 3
         Me.Registrar.Text = "Registrar Log In"
         Me.Registrar.UseVisualStyleBackColor = True
         '
         'Cashier
         '
-        Me.Cashier.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Cashier.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Cashier.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Cashier.Location = New System.Drawing.Point(278, 190)
+        Me.Cashier.Location = New System.Drawing.Point(254, 184)
         Me.Cashier.Name = "Cashier"
-        Me.Cashier.Size = New System.Drawing.Size(188, 39)
+        Me.Cashier.Size = New System.Drawing.Size(242, 49)
         Me.Cashier.TabIndex = 4
         Me.Cashier.Text = "Cashier Log in"
         Me.Cashier.UseVisualStyleBackColor = True

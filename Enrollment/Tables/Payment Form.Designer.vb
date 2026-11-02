@@ -35,8 +35,11 @@ Partial Class Payment_Form
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblStudentName = New System.Windows.Forms.Label()
+        Me.lblBalance = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblPaid = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.dtpPayment = New System.Windows.Forms.DateTimePicker()
         Me.cmbReceive = New System.Windows.Forms.ComboBox()
@@ -47,9 +50,6 @@ Partial Class Payment_Form
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPaymentID = New System.Windows.Forms.TextBox()
-        Me.lblPaid = New System.Windows.Forms.Label()
-        Me.lblBalance = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgvPayment, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -198,14 +198,17 @@ Partial Class Payment_Form
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Payment Information"
         '
-        'lblTotal
+        'Panel1
         '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(18, 37)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(45, 17)
-        Me.lblTotal.TabIndex = 43
-        Me.lblTotal.Text = "Total"
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.lblStudentName)
+        Me.Panel1.Controls.Add(Me.lblBalance)
+        Me.Panel1.Controls.Add(Me.lblTotal)
+        Me.Panel1.Controls.Add(Me.lblPaid)
+        Me.Panel1.Location = New System.Drawing.Point(284, 54)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(200, 100)
+        Me.Panel1.TabIndex = 46
         '
         'lblStudentName
         '
@@ -215,6 +218,33 @@ Partial Class Payment_Form
         Me.lblStudentName.Size = New System.Drawing.Size(49, 17)
         Me.lblStudentName.TabIndex = 42
         Me.lblStudentName.Text = "Name"
+        '
+        'lblBalance
+        '
+        Me.lblBalance.AutoSize = True
+        Me.lblBalance.Location = New System.Drawing.Point(18, 77)
+        Me.lblBalance.Name = "lblBalance"
+        Me.lblBalance.Size = New System.Drawing.Size(66, 17)
+        Me.lblBalance.TabIndex = 45
+        Me.lblBalance.Text = "Balance"
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(18, 37)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(45, 17)
+        Me.lblTotal.TabIndex = 43
+        Me.lblTotal.Text = "Total"
+        '
+        'lblPaid
+        '
+        Me.lblPaid.AutoSize = True
+        Me.lblPaid.Location = New System.Drawing.Point(18, 57)
+        Me.lblPaid.Name = "lblPaid"
+        Me.lblPaid.Size = New System.Drawing.Size(40, 17)
+        Me.lblPaid.TabIndex = 44
+        Me.lblPaid.Text = "Paid"
         '
         'Label4
         '
@@ -303,36 +333,6 @@ Partial Class Payment_Form
         Me.txtPaymentID.Name = "txtPaymentID"
         Me.txtPaymentID.Size = New System.Drawing.Size(142, 22)
         Me.txtPaymentID.TabIndex = 34
-        '
-        'lblPaid
-        '
-        Me.lblPaid.AutoSize = True
-        Me.lblPaid.Location = New System.Drawing.Point(18, 57)
-        Me.lblPaid.Name = "lblPaid"
-        Me.lblPaid.Size = New System.Drawing.Size(40, 17)
-        Me.lblPaid.TabIndex = 44
-        Me.lblPaid.Text = "Paid"
-        '
-        'lblBalance
-        '
-        Me.lblBalance.AutoSize = True
-        Me.lblBalance.Location = New System.Drawing.Point(18, 77)
-        Me.lblBalance.Name = "lblBalance"
-        Me.lblBalance.Size = New System.Drawing.Size(66, 17)
-        Me.lblBalance.TabIndex = 45
-        Me.lblBalance.Text = "Balance"
-        '
-        'Panel1
-        '
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.lblStudentName)
-        Me.Panel1.Controls.Add(Me.lblBalance)
-        Me.Panel1.Controls.Add(Me.lblTotal)
-        Me.Panel1.Controls.Add(Me.lblPaid)
-        Me.Panel1.Location = New System.Drawing.Point(284, 54)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 100)
-        Me.Panel1.TabIndex = 46
         '
         'Payment_Form
         '

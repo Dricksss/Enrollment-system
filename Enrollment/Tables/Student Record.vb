@@ -1,5 +1,7 @@
 ﻿Public Class frmStudent
 
+    Private isChanged As Boolean = False
+
     Private Function CalculateAge(ByVal birthDate As Date) As Integer
         Dim age As Integer = Date.Today.Year - birthDate.Year
 
@@ -10,23 +12,43 @@
         Return age
     End Function
 
+    Private Sub MayBinago() Handles txtStudentID.TextChanged, txtFirstName.TextChanged, txtMiddleName.TextChanged, _
+        txtLastName.TextChanged, dtpBirthDate.ValueChanged, cboGender.TextChanged, txtPlaceOfBirth.TextChanged, _
+        txtAddress.TextChanged, txtMotherName.TextChanged, txtFatherName.TextChanged, txtContactNo.TextChanged
+
+        isChanged = True
+    End Sub
+
     Private Sub frmStudent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connectDB()
-        connectUser("SELECT * FROM student_record")
+        connectStud("SELECT * FROM student_record")
         daStud.Fill(dsStud, rsStud, "student_record")
         dgvStudents.DataSource = dsStud.Tables("student_record").DefaultView
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
 
-        connectUser("SELECT * FROM Student_record WHERE StudLastName  LIKE '" & Me.txtSearch.Text & "%'")
+        connectStud("SELECT * FROM Student_record WHERE StudLastName  LIKE '" & Me.txtSearch.Text & "%'")
         dsStud.Tables("Student_record").Clear()
         daStud.Fill(dsStud, rsStud, "Student_record")
         dgvStudents.DataSource = dsStud.Tables("Student_record").DefaultView
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If saveRecord = True Then
+        If Len(Me.txtStudentID.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtLastName.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtFirstName.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtMiddleName.Text.Trim()) = 0 AndAlso _
+            Len(Me.cboGender.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtPlaceOfBirth.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtAddress.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtMotherName.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtFatherName.Text.Trim()) = 0 AndAlso _
+            Len(Me.txtContactNo.Text.Trim()) = 0 Then
+            MsgBox("The form is empty!")
+            Me.txtStudentID.Focus()
+
+        ElseIf saveRecord = True Then
             If Len(Me.txtStudentID.Text) = 0 Then
                 MsgBox("Please Enter Student ID!")
                 Me.txtStudentID.Focus()
@@ -65,7 +87,7 @@
                     age -= 1
                 End If
 
-                connectUser("SELECT * FROM student_record WHERE StudentID='" & Me.txtStudentID.Text & "'")
+                connectStud("SELECT * FROM student_record WHERE StudentID='" & Me.txtStudentID.Text & "'")
 
                 If rsStud.EOF = False Then
                     MsgBox("Record Already Exists!")
@@ -89,7 +111,7 @@
 
                     MsgBox("Record Successfully Saved!")
 
-                    connectUser("SELECT * FROM student_record")
+                    connectStud("SELECT * FROM student_record")
                     dsStud.Tables("student_record").Clear()
                     daStud.Fill(dsStud, rsStud, "student_record")
                     dgvStudents.DataSource = dsStud.Tables("student_record").DefaultView
@@ -101,7 +123,8 @@
                     btnDelete.Enabled = False
                 End If
             End If
-        Else
+        ElseIf saveRecord = False AndAlso isChanged = True Then
+
             Dim birthDate As Date = Me.dtpBirthDate.Value
             Dim age As Integer = Date.Today.Year - birthDate.Year
 
@@ -127,7 +150,7 @@
 
             MsgBox("Record Successfully Edited!")
 
-            connectUser("SELECT * FROM student_record")
+            connectStud("SELECT * FROM student_record")
             dsStud.Tables("student_record").Clear()
             daStud.Fill(dsStud, rsStud, "student_record")
             dgvStudents.DataSource = dsStud.Tables("student_record").DefaultView
@@ -138,6 +161,9 @@
             btnSave.Enabled = False
             btnUpdate.Enabled = False
             btnDelete.Enabled = False
+        Else
+            MsgBox("No changes were made!")
+
         End If
     End Sub
 
@@ -158,8 +184,8 @@
         strAns = MsgBox("Do you really want to delete this record?", MsgBoxStyle.YesNo)
 
         If strAns = vbYes Then
-            connectUser("DELETE FROM student_record WHERE StudentID='" & Me.txtStudentID.Text & "'")
-            connectUser("SELECT * FROM student_record")
+            connectStud("DELETE FROM student_record WHERE StudentID='" & Me.txtStudentID.Text & "'")
+            connectStud("SELECT * FROM student_record")
             dsStud.Tables("Student_record").Clear()
             daStud.Fill(dsStud, rsStud, "student_record")
             dgvStudents.DataSource = dsStud.Tables("student_record").DefaultView
@@ -169,7 +195,7 @@
     End Sub
 
     Private Sub btnShowAll_Click(sender As Object, e As EventArgs) Handles btnShowAll.Click
-        connectUser("SELECT * FROM student_record")
+        connectStud("SELECT * FROM student_record")
         dsStud.Tables("student_record").Clear()
         daStud.Fill(dsStud, rsStud, "student_record")
         dgvStudents.DataSource = dsStud.Tables("student_record").DefaultView
@@ -242,7 +268,7 @@
         Dim strer As String
 
         strer = dgvStudents.SelectedCells.Item(0).Value
-        connectUser("SELECT * FROM student_record WHERE StudentID ='" & strer & "'")
+        connectStud("SELECT * FROM student_record WHERE StudentID ='" & strer & "'")
 
         If rsStud.EOF = False Then
             Me.txtStudentID.Text = rsStud("StudentID").Value
@@ -264,10 +290,8 @@
 
             btnUpdate.Enabled = True
             btnDelete.Enabled = True
+            isChanged = False
         End If
     End Sub
 
-    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-
-    End Sub
 End Class

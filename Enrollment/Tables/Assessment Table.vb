@@ -12,7 +12,6 @@
             tuitionTotal = 26573.42
         End If
 
-        ' *** Miscellaneous fees: REPLACE the amounts ***
         If Me.chkAthletic.Checked Then miscTotal += 300
         If Me.chkAudio.Checked Then miscTotal += 200
         If Me.chkGuidance.Checked Then miscTotal += 580
@@ -23,7 +22,6 @@
         If Me.chkPublication.Checked Then miscTotal += 110
         If Me.chkRegistration.Checked Then miscTotal += 950
 
-        ' *** Other fees: REPLACE the amounts ***
         If Me.chkAcademic.Checked Then otherTotal += 100
         If Me.chkAnswer.Checked Then otherTotal += 90
         If Me.chkComputer.Checked Then otherTotal += 45

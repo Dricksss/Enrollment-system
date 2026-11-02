@@ -19,6 +19,7 @@
                 strUser = rsCash("CashierLname").Value & ", " & rsCash("CashierFname").Value & " " & rsCash("CashierMname").Value
                 Me.Hide()
                 Payment_Form.Show()
+                UserRole = "Cashier"
             Else
                 MsgBox("Invalid User ID and Password!")
                 Me.Username.Text = ""

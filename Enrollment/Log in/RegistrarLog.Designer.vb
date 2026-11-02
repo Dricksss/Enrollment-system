@@ -36,7 +36,7 @@ Partial Class RegistrarLog
         '
         Me.LogIn.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.LogIn.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LogIn.Location = New System.Drawing.Point(81, 215)
+        Me.LogIn.Location = New System.Drawing.Point(80, 215)
         Me.LogIn.Name = "LogIn"
         Me.LogIn.Size = New System.Drawing.Size(129, 30)
         Me.LogIn.TabIndex = 13
@@ -49,7 +49,7 @@ Partial Class RegistrarLog
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label2.Location = New System.Drawing.Point(17, 183)
+        Me.Label2.Location = New System.Drawing.Point(16, 183)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(103, 20)
         Me.Label2.TabIndex = 12
@@ -70,7 +70,7 @@ Partial Class RegistrarLog
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(17, 148)
+        Me.Label1.Location = New System.Drawing.Point(16, 148)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(106, 20)
         Me.Label1.TabIndex = 10
@@ -89,7 +89,7 @@ Partial Class RegistrarLog
         Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(-3, -1)
+        Me.PictureBox1.Location = New System.Drawing.Point(-4, -1)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(289, 134)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom

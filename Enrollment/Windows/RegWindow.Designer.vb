@@ -30,7 +30,10 @@ Partial Class RegWindow
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblWelcome = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.PaymentRecordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,13 +43,13 @@ Partial Class RegWindow
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1172, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(697, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StudentRecordsToolStripMenuItem, Me.AssessmentToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StudentRecordsToolStripMenuItem, Me.AssessmentToolStripMenuItem, Me.ToolStripSeparator1, Me.PaymentRecordsToolStripMenuItem})
         Me.FileToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(45, 24)
@@ -67,10 +70,11 @@ Partial Class RegWindow
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 28)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1172, 633)
+        Me.Panel1.Size = New System.Drawing.Size(697, 633)
         Me.Panel1.TabIndex = 1
         '
         'lblWelcome
@@ -79,7 +83,7 @@ Partial Class RegWindow
         Me.lblWelcome.AutoSize = True
         Me.lblWelcome.BackColor = System.Drawing.SystemColors.HotTrack
         Me.lblWelcome.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWelcome.Location = New System.Drawing.Point(760, 5)
+        Me.lblWelcome.Location = New System.Drawing.Point(285, 5)
         Me.lblWelcome.Name = "lblWelcome"
         Me.lblWelcome.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblWelcome.Size = New System.Drawing.Size(86, 20)
@@ -91,21 +95,31 @@ Partial Class RegWindow
         Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 28)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1172, 633)
+        Me.PictureBox1.Size = New System.Drawing.Size(697, 633)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(197, 6)
+        '
+        'PaymentRecordsToolStripMenuItem
+        '
+        Me.PaymentRecordsToolStripMenuItem.Name = "PaymentRecordsToolStripMenuItem"
+        Me.PaymentRecordsToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.PaymentRecordsToolStripMenuItem.Text = "Payment Records"
         '
         'RegWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Highlight
-        Me.ClientSize = New System.Drawing.Size(1172, 661)
+        Me.ClientSize = New System.Drawing.Size(697, 661)
         Me.Controls.Add(Me.lblWelcome)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -113,8 +127,10 @@ Partial Class RegWindow
         Me.Name = "RegWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "RegWindow"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -127,4 +143,6 @@ Partial Class RegWindow
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblWelcome As System.Windows.Forms.Label
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents PaymentRecordsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

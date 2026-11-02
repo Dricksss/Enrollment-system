@@ -4,12 +4,31 @@ Imports ADODB
 
 Module Module1
 
+    Public saveRecord As Boolean
+    Public strUser As String
+    Public UserRole As String
+
+    Public Sub Access()
+
+
+        If UserRole = "Registrar" Then
+            Payment_Form.btnAdd.Visible = False
+            Payment_Form.btnSave.Visible = False
+            Payment_Form.btnUpdate.Visible = False
+            Payment_Form.btnDelete.Visible = False
+        Else
+            Payment_Form.btnAdd.Visible = True
+            Payment_Form.btnSave.Visible = True
+            Payment_Form.btnUpdate.Visible = True
+            Payment_Form.btnDelete.Visible = True
+        End If
+
+    End Sub
+
     Public dbConn As ADODB.Connection
     Public rsStud As ADODB.Recordset
     Public daStud As New OleDbDataAdapter
     Public dsStud As New DataSet("student_record")
-    Public saveRecord As Boolean
-    Public strUser As String
 
     Public rsReg As ADODB.Recordset
     Public daReg As New OleDbDataAdapter
@@ -42,7 +61,7 @@ Module Module1
         dbConn.Open()
     End Sub
 
-    Public Sub connectUser(ByVal table As String)
+    Public Sub connectStud(ByVal table As String)
         rsStud = New ADODB.Recordset
         rsStud.CursorLocation = CursorLocationEnum.adUseClient
         rsStud.Open(table, dbConn, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic, 1)

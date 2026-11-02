@@ -1,4 +1,14 @@
 ﻿Public Class Admin_Record
+
+    Private isChanged As Boolean = False
+
+    Private Sub MayBinago() Handles txtAdminID.TextChanged, txtFirstName.TextChanged, txtMiddleName.TextChanged, _
+       txtLastName.TextChanged, txtretypePassword.TextChanged, _
+       txtUsername.TextChanged, txtPassword.TextChanged
+
+        isChanged = True
+    End Sub
+
     Private Sub pwede()
         Me.txtAdminID.Enabled = True
         Me.txtFirstName.Enabled = True
@@ -66,7 +76,16 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim cid As Integer
 
-        If Len(Me.txtAdminID.Text) = 0 Then
+        If Len(Me.txtAdminID.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtLastName.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtFirstName.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtMiddleName.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtUsername.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtPassword.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtretypePassword.Text.Trim()) = 0 Then
+            MsgBox("The form is empty!")
+
+        ElseIf Len(Me.txtAdminID.Text) = 0 Then
             MsgBox("Please Enter Admin ID!")
             Me.txtAdminID.Focus()
         ElseIf Not Integer.TryParse(Me.txtAdminID.Text.Trim(), cid) Then
@@ -87,13 +106,13 @@
         ElseIf Len(Me.txtPassword.Text) = 0 Then
             MsgBox("Please Enter Password!")
             Me.txtPassword.Focus()
-        ElseIf Len(Me.txtRetypePassword.Text) = 0 Then
+        ElseIf Len(Me.txtretypePassword.Text) = 0 Then
             MsgBox("Please Retype Password!")
-            Me.txtRetypePassword.Focus()
-        ElseIf Not Me.txtPassword.Text.Equals(Me.txtRetypePassword.Text) Then
+            Me.txtretypePassword.Focus()
+        ElseIf Not Me.txtPassword.Text.Equals(Me.txtretypePassword.Text) Then
             MsgBox("Passwords Do Not Match!")
-            Me.txtRetypePassword.Text = ""
-            Me.txtRetypePassword.Focus()
+            Me.txtretypePassword.Text = ""
+            Me.txtretypePassword.Focus()
         Else
             Dim user As String = Me.txtUsername.Text.Trim().Replace("'", "''")
 
@@ -137,7 +156,8 @@
 
                 If rsAdm.EOF = False Then
                     MsgBox("Username Already Taken!")
-                Else
+                ElseIf saveRecord = False AndAlso isChanged = True Then
+
                     connectAdmin("SELECT * FROM Admin_record WHERE AdminID='" & cid & "'")
 
                     rsAdm("AdminFname").Value = Me.txtFirstName.Text.Trim()
@@ -161,6 +181,8 @@
                     btnSave.Enabled = False
                     btnUpdate.Enabled = False
                     btnDelete.Enabled = False
+                Else
+                    MsgBox("No changes were made!")
                 End If
             End If
         End If
@@ -241,6 +263,7 @@
             btnUpdate.Enabled = True
             btnDelete.Enabled = True
             btnSave.Enabled = False
+            isChanged = False
         End If
     End Sub
 End Class

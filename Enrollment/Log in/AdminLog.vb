@@ -19,6 +19,7 @@
                 strUser = rsAdm("AdminLname").Value & ", " & rsAdm("AdminFname").Value & " " & rsAdm("AdminMname").Value
                 Me.Hide()
                 AdminWin.Show()
+
             Else
                 MsgBox("Invalid User ID and Password!")
                 Me.Username.Text = ""

@@ -1,5 +1,14 @@
 ﻿Public Class Form2
 
+    Private isChanged As Boolean = False
+
+    Private Sub MayBinago() Handles txtRegID.TextChanged, txtFirstName.TextChanged, txtMiddleName.TextChanged, _
+        txtLastName.TextChanged, dtpRegDate.ValueChanged, txtretypePassword.TextChanged, _
+        txtUsername.TextChanged, txtPassword.TextChanged
+
+        isChanged = True
+    End Sub
+
     Private Sub pwede()
         Me.txtRegID.Enabled = True
         Me.txtFirstName.Enabled = True
@@ -55,7 +64,7 @@
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        ConnectReg("SELECT * FROM registrar_record WHERE RegLastName LIKE '" & Me.txtSearch.Text.Replace("'", "''") & "%'")
+        connectReg("SELECT * FROM registrar_record WHERE RegLastName LIKE '" & Me.txtSearch.Text.Replace("'", "''") & "%'")
         dsReg.Tables("registrar_record").Clear()
         daReg.Fill(dsReg, rsReg, "registrar_record")
         dgvRegistrars.DataSource = dsReg.Tables("registrar_record").DefaultView
@@ -83,7 +92,17 @@
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If Len(Me.txtRegID.Text) = 0 Then
+        If Len(Me.txtRegID.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtLastName.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtFirstName.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtMiddleName.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtUsername.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtPassword.Text.Trim()) = 0 AndAlso _
+           Len(Me.txtretypePassword.Text.Trim()) = 0 Then
+            MsgBox("The form is empty!")
+
+            Me.txtRegID.Focus()
+        ElseIf Len(Me.txtRegID.Text) = 0 Then
             MsgBox("Please Enter Registrar ID!")
             Me.txtRegID.Focus()
         ElseIf Not IsNumeric(Me.txtRegID.Text) Then
@@ -104,23 +123,23 @@
         ElseIf Len(Me.txtPassword.Text) = 0 Then
             MsgBox("Please Enter Password!")
             Me.txtPassword.Focus()
-        ElseIf Len(Me.txtRetypePassword.Text) = 0 Then
+        ElseIf Len(Me.txtretypePassword.Text) = 0 Then
             MsgBox("Please Retype Password!")
-            Me.txtRetypePassword.Focus()
-        ElseIf Not Me.txtPassword.Text.Equals(Me.txtRetypePassword.Text) Then
+            Me.txtretypePassword.Focus()
+        ElseIf Not Me.txtPassword.Text.Equals(Me.txtretypePassword.Text) Then
             MsgBox("Passwords Do Not Match!")
-            Me.txtRetypePassword.Text = ""
-            Me.txtRetypePassword.Focus()
+            Me.txtretypePassword.Text = ""
+            Me.txtretypePassword.Focus()
         Else
             Dim user As String = Me.txtUsername.Text.Trim().Replace("'", "''")
 
             If saveRecord = True Then
-                ConnectReg("SELECT * FROM registrar_record WHERE RegID='" & Me.txtRegID.Text & "'")
+                connectReg("SELECT * FROM registrar_record WHERE RegID='" & Me.txtRegID.Text & "'")
 
                 If rsReg.EOF = False Then
                     MsgBox("Record Already Exists!")
                 Else
-                    ConnectReg("SELECT * FROM registrar_record WHERE RegUsername='" & user & "'")
+                    connectReg("SELECT * FROM registrar_record WHERE RegUsername='" & user & "'")
 
                     If rsReg.EOF = False Then
                         MsgBox("Username Already Taken!")
@@ -137,7 +156,7 @@
 
                         MsgBox("Record Successfully Saved!")
 
-                        ConnectReg("SELECT * FROM registrar_record")
+                        connectReg("SELECT * FROM registrar_record")
                         dsReg.Tables("registrar_record").Clear()
                         daReg.Fill(dsReg, rsReg, "registrar_record")
                         dgvRegistrars.DataSource = dsReg.Tables("registrar_record").DefaultView
@@ -151,12 +170,12 @@
                     End If
                 End If
             Else
-                ConnectReg("SELECT * FROM registrar_record WHERE RegUsername='" & user & "' AND RegID<>'" & Me.txtRegID.Text & "'")
+                connectReg("SELECT * FROM registrar_record WHERE RegUsername='" & user & "' AND RegID<>'" & Me.txtRegID.Text & "'")
 
                 If rsReg.EOF = False Then
                     MsgBox("Username Already Taken!")
-                Else
-                    ConnectReg("SELECT * FROM registrar_record WHERE RegID='" & Me.txtRegID.Text & "'")
+                ElseIf saveRecord = False AndAlso isChanged = True Then
+                    connectReg("SELECT * FROM registrar_record WHERE RegID='" & Me.txtRegID.Text & "'")
 
                     rsReg("RegFirstName").Value = Me.txtFirstName.Text
                     rsReg("RegMiddleName").Value = Me.txtMiddleName.Text
@@ -168,7 +187,7 @@
 
                     MsgBox("Record Successfully Edited!")
 
-                    ConnectReg("SELECT * FROM registrar_record")
+                    connectReg("SELECT * FROM registrar_record")
                     dsReg.Tables("registrar_record").Clear()
                     daReg.Fill(dsReg, rsReg, "registrar_record")
                     dgvRegistrars.DataSource = dsReg.Tables("registrar_record").DefaultView
@@ -180,6 +199,8 @@
                     btnSave.Enabled = False
                     btnUpdate.Enabled = False
                     btnDelete.Enabled = False
+                Else
+                    MsgBox("No changes were made!")
                 End If
             End If
         End If
@@ -190,8 +211,8 @@
         strAns = MsgBox("Do you really want to delete this record?", MsgBoxStyle.YesNo)
 
         If strAns = MsgBoxResult.Yes Then
-            ConnectReg("DELETE FROM registrar_record WHERE RegID='" & Me.txtRegID.Text & "'")
-            ConnectReg("SELECT * FROM registrar_record")
+            connectReg("DELETE FROM registrar_record WHERE RegID='" & Me.txtRegID.Text & "'")
+            connectReg("SELECT * FROM registrar_record")
             dsReg.Tables("registrar_record").Clear()
             daReg.Fill(dsReg, rsReg, "registrar_record")
             dgvRegistrars.DataSource = dsReg.Tables("registrar_record").DefaultView
@@ -207,7 +228,7 @@
     End Sub
 
     Private Sub btnShowAll_Click(sender As Object, e As EventArgs) Handles btnShowAll.Click
-        ConnectReg("SELECT * FROM registrar_record")
+        connectReg("SELECT * FROM registrar_record")
         dsReg.Tables("registrar_record").Clear()
         daReg.Fill(dsReg, rsReg, "registrar_record")
         dgvRegistrars.DataSource = dsReg.Tables("registrar_record").DefaultView
@@ -228,7 +249,7 @@
         Dim strer As String
 
         strer = dgvRegistrars.Rows(e.RowIndex).Cells("RegID").Value
-        ConnectReg("SELECT * FROM registrar_record WHERE RegID ='" & strer & "'")
+        connectReg("SELECT * FROM registrar_record WHERE RegID ='" & strer & "'")
 
         If rsReg.EOF = False Then
             Me.txtRegID.Text = rsReg("RegID").Value & ""
@@ -250,6 +271,7 @@
             btnUpdate.Enabled = True
             btnDelete.Enabled = True
             btnSave.Enabled = False
+            isChanged = False
         End If
     End Sub
 

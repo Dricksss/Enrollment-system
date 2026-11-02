@@ -11,14 +11,16 @@
             Dim user As String = Me.Username.Text.Trim().Replace("\", "\\").Replace("'", "''")
             Dim pass As String = Me.Password.Text.Replace("\", "\\").Replace("'", "''")
 
-            connectReg("SELECT * FROM Registrar_record WHERE RegistrarUsername='" & user & "' " & _
-                       "AND RegistrarPassword=BINARY '" & pass & "'")
+            connectReg("SELECT * FROM Registrar_record WHERE RegUsername='" & user & "' " & _
+                       "AND RegPassword=BINARY '" & pass & "'")
 
             If rsReg.EOF = False Then
                 MsgBox("Username and Password Verified!")
-                strUser = rsReg("RegistrarLastname").Value & ", " & rsReg("RegistrarFirstname").Value & " " & rsReg("RegistrarMiddlename").Value
+                strUser = rsReg("RegLastname").Value & ", " & rsReg("RegFirstname").Value & " " & rsReg("RegMiddlename").Value
                 Me.Hide()
-                Payment_Form.Show()
+                RegWindow.Show()
+                UserRole = "Registrar"
+                
             Else
                 MsgBox("Invalid User ID and Password!")
                 Me.Username.Text = ""

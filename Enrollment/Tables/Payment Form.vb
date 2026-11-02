@@ -56,6 +56,8 @@
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
 
+
+
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -292,6 +294,10 @@
     End Sub
 
     Private Sub lblBalance_Click(sender As Object, e As EventArgs) Handles lblTotal.Click
+
+    End Sub
+
+    Private Sub dgvPayment_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPayment.CellContentClick
 
     End Sub
 End Class

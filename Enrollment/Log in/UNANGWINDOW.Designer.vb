@@ -32,7 +32,7 @@ Partial Class UNANGWINDOW
         'Password
         '
         Me.Password.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Password.Location = New System.Drawing.Point(88, 250)
+        Me.Password.Location = New System.Drawing.Point(92, 250)
         Me.Password.Name = "Password"
         Me.Password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.Password.Size = New System.Drawing.Size(180, 22)
@@ -44,11 +44,11 @@ Partial Class UNANGWINDOW
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(124, 211)
+        Me.Label1.Location = New System.Drawing.Point(129, 211)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(93, 24)
+        Me.Label1.Size = New System.Drawing.Size(98, 24)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = " wilcome"
+        Me.Label1.Text = "Welcome"
         '
         'PictureBox1
         '

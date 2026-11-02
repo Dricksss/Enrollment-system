@@ -28,13 +28,13 @@ Partial Class AdminWin
         Me.StudentM = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegistrarM = New System.Windows.Forms.ToolStripMenuItem()
         Me.CashierM = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PaymentM = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AssessmentM = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminM = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.PaymentM = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AssessmentM = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblWelcome = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblWelcome = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,7 +47,7 @@ Partial Class AdminWin
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1471, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(697, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -76,6 +76,17 @@ Partial Class AdminWin
         Me.CashierM.Size = New System.Drawing.Size(222, 24)
         Me.CashierM.Text = "Cashier Records"
         '
+        'AdminM
+        '
+        Me.AdminM.Name = "AdminM"
+        Me.AdminM.Size = New System.Drawing.Size(222, 24)
+        Me.AdminM.Text = "Admin Records"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(219, 6)
+        '
         'PaymentM
         '
         Me.PaymentM.Name = "PaymentM"
@@ -88,17 +99,6 @@ Partial Class AdminWin
         Me.AssessmentM.Size = New System.Drawing.Size(222, 24)
         Me.AssessmentM.Text = "Assessment Records"
         '
-        'AdminM
-        '
-        Me.AdminM.Name = "AdminM"
-        Me.AdminM.Size = New System.Drawing.Size(222, 24)
-        Me.AdminM.Text = "Admin Records"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(219, 6)
-        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
@@ -106,20 +106,8 @@ Partial Class AdminWin
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 28)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1471, 633)
+        Me.Panel1.Size = New System.Drawing.Size(697, 633)
         Me.Panel1.TabIndex = 2
-        '
-        'lblWelcome
-        '
-        Me.lblWelcome.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblWelcome.AutoSize = True
-        Me.lblWelcome.BackColor = System.Drawing.Color.Transparent
-        Me.lblWelcome.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWelcome.Location = New System.Drawing.Point(1059, 5)
-        Me.lblWelcome.Name = "lblWelcome"
-        Me.lblWelcome.Size = New System.Drawing.Size(86, 20)
-        Me.lblWelcome.TabIndex = 3
-        Me.lblWelcome.Text = "Welcome"
         '
         'PictureBox1
         '
@@ -128,17 +116,29 @@ Partial Class AdminWin
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1471, 633)
+        Me.PictureBox1.Size = New System.Drawing.Size(697, 633)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
+        '
+        'lblWelcome
+        '
+        Me.lblWelcome.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblWelcome.AutoSize = True
+        Me.lblWelcome.BackColor = System.Drawing.Color.Transparent
+        Me.lblWelcome.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWelcome.Location = New System.Drawing.Point(285, 5)
+        Me.lblWelcome.Name = "lblWelcome"
+        Me.lblWelcome.Size = New System.Drawing.Size(86, 20)
+        Me.lblWelcome.TabIndex = 3
+        Me.lblWelcome.Text = "Welcome"
         '
         'AdminWin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.ClientSize = New System.Drawing.Size(1471, 661)
+        Me.ClientSize = New System.Drawing.Size(697, 661)
         Me.Controls.Add(Me.lblWelcome)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -147,6 +147,7 @@ Partial Class AdminWin
         Me.Name = "AdminWin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AdminWin"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
