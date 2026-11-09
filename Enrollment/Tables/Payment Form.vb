@@ -1,4 +1,6 @@
 ﻿Public Class Payment_Form
+    Dim rcptBalance As Double
+    Dim rcptFees As Double
 
     Private Sub pwede()
         Me.txtPaymentID.Enabled = True
@@ -33,7 +35,20 @@
     Private Sub Payment_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connectDB()
 
-        ' fill the Received By list from the cashier table
+        If UserRole = "Registrar" Then
+            btnAdd.Visible = False
+            btnSave.Visible = False
+            btnUpdate.Visible = False
+            btnDelete.Visible = False
+            Receipt.Visible = False
+        Else
+            btnAdd.Visible = True
+            btnSave.Visible = True
+            btnUpdate.Visible = True
+            btnDelete.Visible = True
+            Receipt.Visible = True
+        End If
+
         Me.cmbReceive.Items.Clear()
         connectPayment("SELECT CashierFname, CashierLname FROM cashier_record ORDER BY CashierLname")
         Do While rsPay.EOF = False
@@ -104,34 +119,41 @@
                 MsgBox("Student ID Not Found!")
                 Me.txtStudentID.Focus()
             Else
-                If saveRecord = True Then
-                    connectPayment("SELECT * FROM payment_table WHERE PaymentID='" & pid & "'")
+                connectPayment("SELECT * FROM assessment_table WHERE StudentID='" & sid & "'")
 
-                    If rsPay.EOF = False Then
-                        MsgBox("Record Already Exists!")
+                If rsPay.EOF = True Then
+                    MsgBox("This student has no assessment yet! The registrar must assess the student first.")
+                    Me.txtStudentID.Focus()
+                Else
+                    If saveRecord = True Then
+                        connectPayment("SELECT * FROM payment_table WHERE PaymentID='" & pid & "'")
+
+                        If rsPay.EOF = False Then
+                            MsgBox("Record Already Exists!")
+                        Else
+                            rsPay.AddNew()
+                            rsPay("PaymentID").Value = pid
+                            rsPay("StudentID").Value = sid
+                            rsPay("Amount").Value = amtText
+                            rsPay("ReceivedBy").Value = Me.cmbReceive.Text.Trim()
+                            rsPay("PaymentDate").Value = Me.dtpPayment.Value.ToString("yyyy-MM-dd")
+                            rsPay.Update()
+
+                            MsgBox("Record Successfully Saved!")
+                            saved = True
+                        End If
                     Else
-                        rsPay.AddNew()
-                        rsPay("PaymentID").Value = pid
+                        connectPayment("SELECT * FROM payment_table WHERE PaymentID='" & pid & "'")
+
                         rsPay("StudentID").Value = sid
                         rsPay("Amount").Value = amtText
                         rsPay("ReceivedBy").Value = Me.cmbReceive.Text.Trim()
                         rsPay("PaymentDate").Value = Me.dtpPayment.Value.ToString("yyyy-MM-dd")
                         rsPay.Update()
 
-                        MsgBox("Record Successfully Saved!")
+                        MsgBox("Record Successfully Edited!")
                         saved = True
                     End If
-                Else
-                    connectPayment("SELECT * FROM payment_table WHERE PaymentID='" & pid & "'")
-
-                    rsPay("StudentID").Value = sid
-                    rsPay("Amount").Value = amtText
-                    rsPay("ReceivedBy").Value = Me.cmbReceive.Text.Trim()
-                    rsPay("PaymentDate").Value = Me.dtpPayment.Value.ToString("yyyy-MM-dd")
-                    rsPay.Update()
-
-                    MsgBox("Record Successfully Edited!")
-                    saved = True
                 End If
             End If
         End If
@@ -165,9 +187,9 @@
                     paid = CDec(rsPay("TotalPaid").Value)
                 End If
 
-                Me.lblTotal.Text = "Total Fees: " & fees.ToString("N2")
-                Me.lblPaid.Text = "Paid: " & paid.ToString("N2")
-                Me.lblBalance.Text = "Balance: " & (fees - paid).ToString("N2")
+                Me.lblTotal.Text = fees.ToString("N2")
+                Me.lblPaid.Text = paid.ToString("N2")
+                Me.lblBalance.Text = (fees - paid).ToString("N2")
             End If
 
             btnAdd.Enabled = True
@@ -236,6 +258,8 @@
 
         Me.lblStudentName.Text = ""
         Me.lblTotal.Text = ""
+        Me.lblPaid.Text = ""
+        Me.lblBalance.Text = ""
 
         If Integer.TryParse(Me.txtStudentID.Text.Trim(), sid) Then
             connectPayment("SELECT StudFirstName, StudLastName FROM student_record WHERE StudentID='" & sid & "'")
@@ -260,14 +284,15 @@
                 paid = CDec(rsPay("TotalPaid").Value)
             End If
 
-            Me.lblTotal.Text = "Total Fees: " & fees.ToString("N2") & vbCrLf &
-                                 "Paid: " & paid.ToString("N2") & vbCrLf &
-                                 "Balance: " & (fees - paid).ToString("N2")
+            Me.lblTotal.Text = fees.ToString("N2")
+            Me.lblPaid.Text = paid.ToString("N2")
+            Me.lblBalance.Text = (fees - paid).ToString("N2")
         End If
     End Sub
 
     Private Sub dgvPayment_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvPayment.RowHeaderMouseClick
         Dim strer As String
+        Dim d As Date
 
         strer = dgvPayment.Rows(e.RowIndex).Cells("PaymentID").Value
         connectPayment("SELECT * FROM payment_table WHERE PaymentID ='" & strer & "'")
@@ -277,7 +302,7 @@
             Me.txtAmount.Text = rsPay("Amount").Value & ""
             Me.cmbReceive.Text = rsPay("ReceivedBy").Value & ""
 
-            Dim d As Date
+
             If Date.TryParse(rsPay("PaymentDate").Value & "", d) AndAlso d <= Date.Today Then
                 Me.dtpPayment.Value = d
             Else
@@ -300,4 +325,54 @@
     Private Sub dgvPayment_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPayment.CellContentClick
 
     End Sub
+
+    Private Sub Receipt_Click(sender As Object, e As EventArgs) Handles Receipt.Click
+        Dim pid As Integer
+        Dim sid As Integer
+        Dim Paidsss As Decimal = 0
+        Dim Balancesss As Decimal = 0
+
+        ' the payment must be saved first
+        If Not Integer.TryParse(Me.txtPaymentID.Text.Trim(), pid) Then
+            MsgBox("Select or save a payment first!")
+            Return
+        End If
+        connectPayment("SELECT * FROM payment_table WHERE PaymentID='" & pid & "'")
+        If rsPay.EOF = True Then
+            MsgBox("Please save the payment first!")
+            Return
+        End If
+
+        If Not Integer.TryParse(Me.txtStudentID.Text.Trim(), sid) Then
+            MsgBox("Please enter a valid Student ID!")
+            Return
+        End If
+
+        Decimal.TryParse(lblPaid.Text, Paidsss)
+        Decimal.TryParse(lblBalance.Text, Balancesss)
+
+        connectPayment("SELECT StudFirstName, StudMiddleName, StudLastName FROM student_record WHERE StudentID='" & sid & "'")
+        If rsPay.EOF = True Then
+            Me.lblStudentName.Text = "Student not found"
+            Return
+        End If
+
+        Dim fullName As String = rsPay("StudLastName").Value & ", " & rsPay("StudFirstName").Value & " " & rsPay("StudMiddleName").Value
+
+        MsgBox("Mary The Queen Colleges" & vbCrLf _
+               & "OFFICIAL RECEIPT" & vbCrLf _
+               & "===================" & vbCrLf _
+               & "Receipt No: " & txtPaymentID.Text & vbCrLf _
+               & "Payment date: " & dtpPayment.Value.ToShortDateString() & vbCrLf _
+               & "Student ID: " & txtStudentID.Text & vbCrLf _
+               & "Student Name: " & fullName.Trim() & vbCrLf _
+               & "===================" & vbCrLf _
+               & "Amount Paid: " & txtAmount.Text & vbCrLf _
+               & "Total Paid: " & Paidsss.ToString("N2") & vbCrLf _
+               & "Balance: " & Balancesss.ToString("N2") & vbCrLf _
+               & "Received By: " & cmbReceive.Text & vbCrLf _
+               & "Issued on: " & Date.Now.ToString("yyyy-MM-dd HH:mm"), _
+               MsgBoxStyle.Information, "Receipt")
+    End Sub
+
 End Class

@@ -21,3 +21,4 @@ C:\Users\giane\OneDrive\Documents\Visual Studio 2012\Projects\Enrollment\Enrollm
 C:\Users\giane\OneDrive\Documents\Visual Studio 2012\Projects\Enrollment\Enrollment\obj\Debug\Enrollment.CashierLog.resources
 C:\Users\giane\OneDrive\Documents\Visual Studio 2012\Projects\Enrollment\Enrollment\obj\Debug\Enrollment.RegistrarLog.resources
 C:\Users\giane\OneDrive\Documents\Visual Studio 2012\Projects\Enrollment\Enrollment\obj\Debug\Enrollment.RegWindow.resources
+C:\Users\giane\OneDrive\Documents\Visual Studio 2012\Projects\Enrollment\Enrollment\obj\Debug\Enrollment.CashWindow.resources

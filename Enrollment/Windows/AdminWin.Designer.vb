@@ -35,6 +35,7 @@ Partial Class AdminWin
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblWelcome = New System.Windows.Forms.Label()
+        Me.LogOut = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,7 +48,7 @@ Partial Class AdminWin
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(697, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(988, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -106,7 +107,7 @@ Partial Class AdminWin
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 28)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(697, 633)
+        Me.Panel1.Size = New System.Drawing.Size(988, 633)
         Me.Panel1.TabIndex = 2
         '
         'PictureBox1
@@ -116,7 +117,7 @@ Partial Class AdminWin
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(697, 633)
+        Me.PictureBox1.Size = New System.Drawing.Size(988, 633)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
@@ -127,18 +128,33 @@ Partial Class AdminWin
         Me.lblWelcome.AutoSize = True
         Me.lblWelcome.BackColor = System.Drawing.Color.Transparent
         Me.lblWelcome.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWelcome.Location = New System.Drawing.Point(285, 5)
+        Me.lblWelcome.Location = New System.Drawing.Point(546, 5)
         Me.lblWelcome.Name = "lblWelcome"
         Me.lblWelcome.Size = New System.Drawing.Size(86, 20)
         Me.lblWelcome.TabIndex = 3
         Me.lblWelcome.Text = "Welcome"
+        '
+        'LogOut
+        '
+        Me.LogOut.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LogOut.AutoSize = True
+        Me.LogOut.BackColor = System.Drawing.Color.Transparent
+        Me.LogOut.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.LogOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LogOut.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.LogOut.Location = New System.Drawing.Point(895, 5)
+        Me.LogOut.Name = "LogOut"
+        Me.LogOut.Size = New System.Drawing.Size(63, 17)
+        Me.LogOut.TabIndex = 4
+        Me.LogOut.Text = "Log out"
         '
         'AdminWin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.ClientSize = New System.Drawing.Size(697, 661)
+        Me.ClientSize = New System.Drawing.Size(988, 661)
+        Me.Controls.Add(Me.LogOut)
         Me.Controls.Add(Me.lblWelcome)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -168,4 +184,5 @@ Partial Class AdminWin
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblWelcome As System.Windows.Forms.Label
+    Friend WithEvents LogOut As System.Windows.Forms.Label
 End Class

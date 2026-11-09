@@ -53,4 +53,15 @@
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
     End Sub
+
+    Private Sub Label1_Click_1(sender As Object, e As EventArgs) Handles LogOut.Click
+        Me.Close()
+        UserRole = ""
+        strUser = ""
+        AdminLog.Username.Clear()
+        AdminLog.Password.Clear()
+        Menuu.Show()
+        
+
+    End Sub
 End Class

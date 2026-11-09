@@ -29,6 +29,7 @@ Partial Class RegistrarLog
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Username = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -96,12 +97,25 @@ Partial Class RegistrarLog
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, CType((System.Drawing.FontStyle.Italic Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.InactiveCaption
+        Me.Label3.Location = New System.Drawing.Point(3, 227)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(39, 17)
+        Me.Label3.TabIndex = 14
+        Me.Label3.Text = "Back"
+        '
         'RegistrarLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.HotTrack
         Me.ClientSize = New System.Drawing.Size(282, 253)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LogIn)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Password)
@@ -123,4 +137,5 @@ Partial Class RegistrarLog
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Username As System.Windows.Forms.TextBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

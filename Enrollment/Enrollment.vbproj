@@ -127,6 +127,12 @@
     <Compile Include="Log in\RegistrarLog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Windows\CashWindow.Designer.vb">
+      <DependentUpon>CashWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CashWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Windows\RegWindow.Designer.vb">
       <DependentUpon>RegWindow.vb</DependentUpon>
     </Compile>
@@ -197,6 +203,9 @@
     <EmbeddedResource Include="Log in\RegistrarLog.resx">
       <DependentUpon>RegistrarLog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\CashWindow.resx">
+      <DependentUpon>CashWindow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\RegWindow.resx">
       <DependentUpon>RegWindow.vb</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MQCLogo.ico" />
+    <None Include="Resources\CashierIcon.png" />
+    <None Include="Resources\RegistrarIcon.png" />
+    <None Include="Resources\AdminIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

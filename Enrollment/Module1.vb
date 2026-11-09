@@ -8,22 +8,7 @@ Module Module1
     Public strUser As String
     Public UserRole As String
 
-    Public Sub Access()
-
-
-        If UserRole = "Registrar" Then
-            Payment_Form.btnAdd.Visible = False
-            Payment_Form.btnSave.Visible = False
-            Payment_Form.btnUpdate.Visible = False
-            Payment_Form.btnDelete.Visible = False
-        Else
-            Payment_Form.btnAdd.Visible = True
-            Payment_Form.btnSave.Visible = True
-            Payment_Form.btnUpdate.Visible = True
-            Payment_Form.btnDelete.Visible = True
-        End If
-
-    End Sub
+    
 
     Public dbConn As ADODB.Connection
     Public rsStud As ADODB.Recordset
@@ -50,14 +35,14 @@ Module Module1
     Public daPay As New OleDbDataAdapter
     Public dsPay As New DataSet("payment_table")
 
-
     Public Sub connectDB()
         dbConn = New ADODB.Connection
         dbConn.ConnectionString = "DRIVER={MySQL ODBC 3.51 Driver};" _
             & "SERVER=localhost;" _
             & "DATABASE=enrollment;" _
             & "UID=root;" _
-            & "PASSWORD=123456;"
+            & "PASSWORD=123456;" _
+            & "OPTION=3;"
         dbConn.Open()
     End Sub
 

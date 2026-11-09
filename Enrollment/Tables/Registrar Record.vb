@@ -52,6 +52,9 @@
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connectDB()
+
+        
+
         connectReg("SELECT * FROM registrar_record")
         daReg.Fill(dsReg, rsReg, "registrar_record")
         dgvRegistrars.DataSource = dsReg.Tables("registrar_record").DefaultView

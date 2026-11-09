@@ -17,9 +17,13 @@
             If rsCash.EOF = False Then
                 MsgBox("Username and Password Verified!")
                 strUser = rsCash("CashierLname").Value & ", " & rsCash("CashierFname").Value & " " & rsCash("CashierMname").Value
-                Me.Hide()
-                Payment_Form.Show()
+
+                Me.Username.Text = ""
+                Me.Password.Text = ""
                 UserRole = "Cashier"
+                Me.Hide()
+                CashWindow.Show()
+
             Else
                 MsgBox("Invalid User ID and Password!")
                 Me.Username.Text = ""
@@ -31,5 +35,10 @@
 
     Private Sub CashierLog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connectDB()
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+        Me.Close()
+        Menuu.Show()
     End Sub
 End Class

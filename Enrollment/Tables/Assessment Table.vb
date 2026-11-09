@@ -8,6 +8,8 @@
         tuitionTotal = 0
         miscTotal = 0
         otherTotal = 0
+
+        Decimal.TryParse(cmbTuition.Text & "", tuitionTotal)
         If cmbTuition.Text = ("₱26,573.42 (Fixed)") Then
             tuitionTotal = 26573.42
         End If
@@ -103,6 +105,19 @@
 
     Private Sub Assessment_Table_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connectDB()
+
+        If UserRole = "Cashier" Then
+            btnAdd.Visible = False
+            btnSave.Visible = False
+            btnUpdate.Visible = False
+            btnDelete.Visible = False
+        Else
+            btnAdd.Visible = True
+            btnSave.Visible = True
+            btnUpdate.Visible = True
+            btnDelete.Visible = True
+        End If
+
         connectAssess("SELECT * FROM assessment_table")
         If dsAss.Tables.Contains("assessment_table") Then
             dsAss.Tables("assessment_table").Clear()
@@ -316,7 +331,6 @@
 
     Private Sub dgvAssessment_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvAssessment.RowHeaderMouseClick
         Dim strer As String
-        Dim keepSearch As String = Me.txtSearch.Text
 
         strer = dgvAssessment.Rows(e.RowIndex).Cells("StudentID").Value
         connectAssess("SELECT * FROM assessment_table WHERE StudentID ='" & strer & "'")
@@ -331,7 +345,7 @@
             Decimal.TryParse(rsAss("Otherfee").Value & "", o)
 
             Call burahin()
-            Me.txtSearch.Text = keepSearch
+            Me.txtSearch.Text = Me.txtSearch.Text
             Me.txtStudentID.Text = strer
             Me.cmbTuition.Text = t.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
 

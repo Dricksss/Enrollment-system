@@ -27,11 +27,12 @@ Partial Class RegWindow
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StudentRecordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AssessmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblWelcome = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.PaymentRecordsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblWelcome = New System.Windows.Forms.Label()
+        Me.LogOut = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,14 +59,25 @@ Partial Class RegWindow
         'StudentRecordsToolStripMenuItem
         '
         Me.StudentRecordsToolStripMenuItem.Name = "StudentRecordsToolStripMenuItem"
-        Me.StudentRecordsToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
+        Me.StudentRecordsToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
         Me.StudentRecordsToolStripMenuItem.Text = "Student Records"
         '
         'AssessmentToolStripMenuItem
         '
         Me.AssessmentToolStripMenuItem.Name = "AssessmentToolStripMenuItem"
-        Me.AssessmentToolStripMenuItem.Size = New System.Drawing.Size(193, 24)
+        Me.AssessmentToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
         Me.AssessmentToolStripMenuItem.Text = "Assessment"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(197, 6)
+        '
+        'PaymentRecordsToolStripMenuItem
+        '
+        Me.PaymentRecordsToolStripMenuItem.Name = "PaymentRecordsToolStripMenuItem"
+        Me.PaymentRecordsToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
+        Me.PaymentRecordsToolStripMenuItem.Text = "Payment Records"
         '
         'Panel1
         '
@@ -83,12 +95,26 @@ Partial Class RegWindow
         Me.lblWelcome.AutoSize = True
         Me.lblWelcome.BackColor = System.Drawing.SystemColors.HotTrack
         Me.lblWelcome.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWelcome.Location = New System.Drawing.Point(285, 5)
+        Me.lblWelcome.Location = New System.Drawing.Point(256, 5)
         Me.lblWelcome.Name = "lblWelcome"
         Me.lblWelcome.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblWelcome.Size = New System.Drawing.Size(86, 20)
         Me.lblWelcome.TabIndex = 4
         Me.lblWelcome.Text = "Welcome"
+        '
+        'LogOut
+        '
+        Me.LogOut.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LogOut.AutoSize = True
+        Me.LogOut.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.LogOut.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.LogOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LogOut.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.LogOut.Location = New System.Drawing.Point(607, 5)
+        Me.LogOut.Name = "LogOut"
+        Me.LogOut.Size = New System.Drawing.Size(63, 17)
+        Me.LogOut.TabIndex = 5
+        Me.LogOut.Text = "Log out"
         '
         'PictureBox1
         '
@@ -102,23 +128,13 @@ Partial Class RegWindow
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(197, 6)
-        '
-        'PaymentRecordsToolStripMenuItem
-        '
-        Me.PaymentRecordsToolStripMenuItem.Name = "PaymentRecordsToolStripMenuItem"
-        Me.PaymentRecordsToolStripMenuItem.Size = New System.Drawing.Size(200, 24)
-        Me.PaymentRecordsToolStripMenuItem.Text = "Payment Records"
-        '
         'RegWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Highlight
         Me.ClientSize = New System.Drawing.Size(697, 661)
+        Me.Controls.Add(Me.LogOut)
         Me.Controls.Add(Me.lblWelcome)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -145,4 +161,5 @@ Partial Class RegWindow
     Friend WithEvents lblWelcome As System.Windows.Forms.Label
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents PaymentRecordsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LogOut As System.Windows.Forms.Label
 End Class

@@ -17,6 +17,7 @@
 
     Private Sub RegWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+
         Me.lblWelcome.Text = "Welcome, " & strUser
     End Sub
 
@@ -40,6 +41,19 @@
         
 
         Payment_Form.Show()
+
+    End Sub
+
+    Private Sub LogOut_Click(sender As Object, e As EventArgs) Handles LogOut.Click
+        Me.Close()
+        UserRole = ""
+        strUser = ""
+        RegistrarLog.Username.Clear()
+        RegistrarLog.Password.Clear()
+        Menuu.Show()
+    End Sub
+
+    Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
 
     End Sub
 End Class

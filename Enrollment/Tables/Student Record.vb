@@ -21,14 +21,33 @@
 
     Private Sub frmStudent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connectDB()
+
+        If UserRole = "Cashier" Then
+            btnAdd.Visible = False
+            btnSave.Visible = False
+            btnUpdate.Visible = False
+            btnDelete.Visible = False
+        Else
+            btnAdd.Visible = True
+            btnSave.Visible = True
+            btnUpdate.Visible = True
+            btnDelete.Visible = True
+        End If
+
         connectStud("SELECT * FROM student_record")
         daStud.Fill(dsStud, rsStud, "student_record")
         dgvStudents.DataSource = dsStud.Tables("student_record").DefaultView
+
+        Call burahin()
+        Call dipwede()
+        btnSave.Enabled = False
+        btnUpdate.Enabled = False
+        btnDelete.Enabled = False
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
 
-        connectStud("SELECT * FROM Student_record WHERE StudLastName  LIKE '" & Me.txtSearch.Text & "%'")
+        connectStud("SELECT * FROM Student_record WHERE StudLastName  LIKE '" & Me.txtSearch.Text.Replace("'", "''") & "%'")
         dsStud.Tables("Student_record").Clear()
         daStud.Fill(dsStud, rsStud, "Student_record")
         dgvStudents.DataSource = dsStud.Tables("Student_record").DefaultView
@@ -125,6 +144,12 @@
             End If
         ElseIf saveRecord = False AndAlso isChanged = True Then
 
+            connectStud("SELECT * FROM student_record WHERE StudentID='" & Me.txtStudentID.Text & "'")
+            If rsStud.EOF = True Then
+                MsgBox("That student no longer exists.")
+                Return
+            End If
+
             Dim birthDate As Date = Me.dtpBirthDate.Value
             Dim age As Integer = Date.Today.Year - birthDate.Year
 
@@ -174,6 +199,7 @@
         btnAdd.Enabled = True
         btnDelete.Enabled = False
         saveRecord = False
+        Me.txtStudentID.Enabled = False
         txtStudentID.Focus()
 
     End Sub
@@ -294,4 +320,7 @@
         End If
     End Sub
 
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+    End Sub
 End Class

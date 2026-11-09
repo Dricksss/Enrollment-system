@@ -50,6 +50,10 @@ Partial Class Payment_Form
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPaymentID = New System.Windows.Forms.TextBox()
+        Me.Receipt = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgvPayment, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -68,7 +72,7 @@ Partial Class Payment_Form
         Me.GroupBox4.Controls.Add(Me.dgvPayment)
         Me.GroupBox4.Location = New System.Drawing.Point(14, 187)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(711, 191)
+        Me.GroupBox4.Size = New System.Drawing.Size(902, 208)
         Me.GroupBox4.TabIndex = 25
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Data"
@@ -77,7 +81,7 @@ Partial Class Payment_Form
         '
         Me.btnShowAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnShowAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnShowAll.Location = New System.Drawing.Point(556, 160)
+        Me.btnShowAll.Location = New System.Drawing.Point(556, 177)
         Me.btnShowAll.Name = "btnShowAll"
         Me.btnShowAll.Size = New System.Drawing.Size(142, 23)
         Me.btnShowAll.TabIndex = 26
@@ -88,7 +92,7 @@ Partial Class Payment_Form
         '
         Me.txtSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(92, 160)
+        Me.txtSearch.Location = New System.Drawing.Point(92, 177)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(217, 22)
         Me.txtSearch.TabIndex = 28
@@ -97,7 +101,7 @@ Partial Class Payment_Form
         '
         Me.btnSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(380, 160)
+        Me.btnSearch.Location = New System.Drawing.Point(380, 177)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(142, 23)
         Me.btnSearch.TabIndex = 25
@@ -109,7 +113,7 @@ Partial Class Payment_Form
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(17, 163)
+        Me.Label3.Location = New System.Drawing.Point(17, 180)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(69, 17)
         Me.Label3.TabIndex = 27
@@ -130,50 +134,50 @@ Partial Class Payment_Form
         Me.dgvPayment.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.dgvPayment.RowTemplate.Height = 24
         Me.dgvPayment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvPayment.Size = New System.Drawing.Size(698, 130)
+        Me.dgvPayment.Size = New System.Drawing.Size(889, 147)
         Me.dgvPayment.TabIndex = 0
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(551, 16)
+        Me.btnAdd.Location = New System.Drawing.Point(726, 24)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(169, 28)
+        Me.btnAdd.Size = New System.Drawing.Size(169, 46)
         Me.btnAdd.TabIndex = 24
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
         'btnClear
         '
-        Me.btnClear.Location = New System.Drawing.Point(551, 151)
+        Me.btnClear.Location = New System.Drawing.Point(551, 128)
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(169, 28)
+        Me.btnClear.Size = New System.Drawing.Size(169, 46)
         Me.btnClear.TabIndex = 23
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(551, 117)
+        Me.btnDelete.Location = New System.Drawing.Point(551, 76)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(169, 28)
+        Me.btnDelete.Size = New System.Drawing.Size(169, 46)
         Me.btnDelete.TabIndex = 22
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(551, 83)
+        Me.btnUpdate.Location = New System.Drawing.Point(551, 24)
         Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(169, 28)
+        Me.btnUpdate.Size = New System.Drawing.Size(169, 46)
         Me.btnUpdate.TabIndex = 21
         Me.btnUpdate.Text = "Update"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(551, 49)
+        Me.btnSave.Location = New System.Drawing.Point(726, 76)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(169, 28)
+        Me.btnSave.Size = New System.Drawing.Size(169, 46)
         Me.btnSave.TabIndex = 20
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -201,6 +205,9 @@ Partial Class Payment_Form
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Label7)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.lblStudentName)
         Me.Panel1.Controls.Add(Me.lblBalance)
         Me.Panel1.Controls.Add(Me.lblTotal)
@@ -222,7 +229,7 @@ Partial Class Payment_Form
         'lblBalance
         '
         Me.lblBalance.AutoSize = True
-        Me.lblBalance.Location = New System.Drawing.Point(18, 77)
+        Me.lblBalance.Location = New System.Drawing.Point(98, 76)
         Me.lblBalance.Name = "lblBalance"
         Me.lblBalance.Size = New System.Drawing.Size(66, 17)
         Me.lblBalance.TabIndex = 45
@@ -231,7 +238,7 @@ Partial Class Payment_Form
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(18, 37)
+        Me.lblTotal.Location = New System.Drawing.Point(98, 36)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(45, 17)
         Me.lblTotal.TabIndex = 43
@@ -240,7 +247,7 @@ Partial Class Payment_Form
         'lblPaid
         '
         Me.lblPaid.AutoSize = True
-        Me.lblPaid.Location = New System.Drawing.Point(18, 57)
+        Me.lblPaid.Location = New System.Drawing.Point(98, 56)
         Me.lblPaid.Name = "lblPaid"
         Me.lblPaid.Size = New System.Drawing.Size(40, 17)
         Me.lblPaid.TabIndex = 44
@@ -334,11 +341,48 @@ Partial Class Payment_Form
         Me.txtPaymentID.Size = New System.Drawing.Size(142, 22)
         Me.txtPaymentID.TabIndex = 34
         '
+        'Receipt
+        '
+        Me.Receipt.Location = New System.Drawing.Point(726, 128)
+        Me.Receipt.Name = "Receipt"
+        Me.Receipt.Size = New System.Drawing.Size(169, 46)
+        Me.Receipt.TabIndex = 27
+        Me.Receipt.Text = "Print Receipt"
+        Me.Receipt.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(18, 75)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(76, 17)
+        Me.Label7.TabIndex = 48
+        Me.Label7.Text = "Balance: "
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(18, 35)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(55, 17)
+        Me.Label8.TabIndex = 46
+        Me.Label8.Text = "Total: "
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(18, 55)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(50, 17)
+        Me.Label9.TabIndex = 47
+        Me.Label9.Text = "Paid: "
+        '
         'Payment_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(731, 387)
+        Me.ClientSize = New System.Drawing.Size(928, 404)
+        Me.Controls.Add(Me.Receipt)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.btnClear)
@@ -388,4 +432,8 @@ Partial Class Payment_Form
     Friend WithEvents lblBalance As System.Windows.Forms.Label
     Friend WithEvents lblPaid As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Receipt As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
 End Class

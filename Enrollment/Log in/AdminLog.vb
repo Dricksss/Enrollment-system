@@ -17,8 +17,13 @@
             If rsAdm.EOF = False Then
                 MsgBox("Username and Password Verified!")
                 strUser = rsAdm("AdminLname").Value & ", " & rsAdm("AdminFname").Value & " " & rsAdm("AdminMname").Value
+
+                Me.Username.Text = ""
+                Me.Password.Text = ""
+                UserRole = "Admin"
                 Me.Hide()
                 AdminWin.Show()
+
 
             Else
                 MsgBox("Invalid User ID and Password!")
@@ -31,5 +36,14 @@
 
     Private Sub AdminLog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         connectDB()
+    End Sub
+
+    Private Sub Username_TextChanged(sender As Object, e As EventArgs) Handles Username.TextChanged
+
+    End Sub 
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+        Me.Close()
+        Menuu.Show()
     End Sub
 End Class
