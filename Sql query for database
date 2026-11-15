@@ -1,0 +1,71 @@
+CREATE DATABASE `enrollment` /*!40100 DEFAULT CHARACTER SET latin1 */
+
+
+CREATE TABLE `admin_record` (
+  `AdminID` int(12) NOT NULL,
+  `AdminFname` varchar(50) default NULL,
+  `AdminMname` varchar(50) default NULL,
+  `AdminLname` varchar(50) default NULL,
+  `AdminPassword` varchar(50) default NULL,
+  `AdminUsername` varchar(50) default NULL,
+  PRIMARY KEY  (`AdminID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `assessment_table` (
+  `StudentID` int(12) NOT NULL,
+  `Tuition` varchar(50) default NULL,
+  `Miscellaneous` varchar(100) default NULL,
+  `Otherfee` varchar(50) default NULL,
+  PRIMARY KEY  (`StudentID`),
+  CONSTRAINT `FK_assessment_table` FOREIGN KEY (`StudentID`) REFERENCES `student_record` (`StudentID`) ON DELETE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `cashier_record` (
+  `CashierID` int(12) NOT NULL,
+  `CashierFname` varchar(50) default NULL,
+  `CashierMname` varchar(50) default NULL,
+  `CashierLname` varchar(50) default NULL,
+  `CashierPassword` varchar(50) default NULL,
+  `CashierUsername` varchar(50) default NULL,
+  PRIMARY KEY  (`CashierID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `payment_table` (
+  `PaymentID` int(12) NOT NULL,
+  `StudentID` int(12) default NULL,
+  `Amount` varchar(50) default NULL,
+  `ReceivedBy` varchar(50) default NULL,
+  `PaymentDate` varchar(50) default NULL,
+  PRIMARY KEY  (`PaymentID`),
+  KEY `fk_payment_assessment` (`StudentID`),
+  CONSTRAINT `FK_payment_table` FOREIGN KEY (`StudentID`) REFERENCES `assessment_table` (`StudentID`) ON DELETE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `registrar_record` (
+  `RegID` int(50) NOT NULL,
+  `RegFirstName` varchar(50) default NULL,
+  `RegMiddleName` varchar(50) default NULL,
+  `RegLastName` varchar(50) default NULL,
+  `RegPassword` varchar(50) default NULL,
+  `RegUsername` varchar(50) default NULL,
+  `RegDate` varchar(50) default NULL,
+  PRIMARY KEY  (`RegID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `student_record` (
+  `StudentID` int(12) NOT NULL,
+  `StudFirstName` varchar(50) default NULL,
+  `StudMiddleName` varchar(50) default NULL,
+  `StudLastName` varchar(50) default NULL,
+  `Age` int(12) default NULL,
+  `Address` varchar(50) default NULL,
+  `Gender` varchar(50) default NULL,
+  `PlaceofBirth` varchar(50) default NULL,
+  `BMonth` varchar(50) default NULL,
+  `BDay` varchar(50) default NULL,
+  `BYear` varchar(50) default NULL,
+  `MotherName` varchar(50) default NULL,
+  `FatherName` varchar(50) default NULL,
+  `ContactNo.` varchar(50) default NULL,
+  PRIMARY KEY  (`StudentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
